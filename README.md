@@ -10,4 +10,4 @@
 - 此项目背景模板来自 [@Lostdegree](https://github.com/Lostdegree) 的 [项目-Portune](https://github.com/Lostdegree/Portune)
 ### 背景制作
 - 东方project @妖
-- 诺亚幻想 [@Yiwen-Chan](https://github.com/Yiwen-Chan)
+- 诺亚幻想 [@Yiwen-Chan](https://github.com/Yiwen-Chan) @布丁家的芒果 @汐言
