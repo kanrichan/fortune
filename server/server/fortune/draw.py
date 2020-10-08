@@ -3,17 +3,19 @@ import os
 import json
 import random
 
-def drawing(type,qq):
+def drawing(types,fromQQ):
     # 插件目录 C:\Users\asus\Downloads\Programs\github\fortune\server\server\fortune
     base_path = os.path.split(os.path.realpath(__file__))[0]
-    img_dir = f'{base_path}/data/img/{type}/'
+    img_dir = f'{base_path}/data/img/{types}/'
     img_path = img_dir + random.choice(os.listdir(img_dir))
-    out_dir = f'{base_path}/data/out/{type}/'
-    out_path = out_dir + f'{qq}.jpg'
+    out_dir = f'{base_path}/data/out/{types}/'
+    out_path = out_dir + f'{fromQQ}.jpg'
     text_path = f'{base_path}/data/text/copywriting.json'
     title_path = f'{base_path}/data/text/goodLuck.json'
-    font_text_path = f'{base_path}/data/font/Mamelon.otf'
-    font_title_path = f'{base_path}/data/font/sakura.ttf'
+    fontPath = {
+        'title': f"{base_path}/data/font/Mamelon.otf",
+        'text': f"{base_path}/data/font/sakura.ttf"
+    }
 
     if not os.path.exists(out_dir):
        os.makedirs(out_dir)
@@ -36,7 +38,7 @@ def drawing(type,qq):
     font_size = 45
     color = '#F5F5F5'
     image_font_center = (140, 99)
-    ttfront = ImageFont.truetype(font_title_path, font_size)
+    ttfront = ImageFont.truetype(fontPath['title'], font_size)
     font_length = ttfront.getsize(title)
     draw.text((image_font_center[0]-font_length[0]/2, image_font_center[1]-font_length[1]/2),
                 title, fill=color,font=ttfront)
@@ -44,7 +46,7 @@ def drawing(type,qq):
     font_size = 25
     color = '#323232'
     image_font_center = [140, 297]
-    ttfront = ImageFont.truetype(font_text_path, font_size)
+    ttfront = ImageFont.truetype(fontPath['text'], font_size)
     result = decrement(text)
     if not result[0]:
         return 
