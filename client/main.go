@@ -189,8 +189,8 @@ func main() {
 					au_time,
 				}
 
-				apiFortune := "http://www.kanri.ml:10086/fortune"
-				apiPic := "http://www.kanri.ml:10086/fortune.jpg"
+				apiFortune := "http://127.0.0.1:8000/fortune"
+				apiPic := "http://127.0.0.1:8000/fortune.jpg"
 				fortuneJson := fortune(apiFortune, fromDataParm, headerParm)
 
 				Message := ""
