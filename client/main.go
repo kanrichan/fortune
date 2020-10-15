@@ -125,9 +125,20 @@ func PathExecute() string {
 	return dir + "/"
 }
 
-func notSend() {
-	today := time.Now().Day()
-	if today 
+var Note string = ""
+
+func notSend() bool {
+	todayTime := time.Now().Day()
+	today := fmt.Sprintf("%v", todayTime)
+	if Note == "" {
+		Note = today
+		return true
+	} else if Note != today {
+		Note = today
+		return true
+	} else {
+		return false
+	}
 }
 
 func main() {
