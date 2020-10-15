@@ -52,79 +52,6 @@ type SettingConfig struct {
 	Limit string `json:"limit"`
 }
 
-func DefaultConfig() *JsonConfig {
-	return &JsonConfig{
-		Host:    "127.0.0.1",
-		Port:    8000,
-		Master:  12345678,
-		Trigger: "运势",
-		Setting: []*SettingConfig{
-			{
-				Group: 0,
-				Types: "车万",
-				Limit: "on",
-			},
-			{
-				Group: 87654321,
-				Types: "碧蓝幻想",
-				Limit: "on",
-			},
-		},
-	}
-}
-
-func Load(p string) *JsonConfig {
-	if !PathExists(p) {
-		log.Warnf("尝试加载配置文件 %v 失败: 文件不存在", p)
-		return nil
-	}
-	c := JsonConfig{}
-	err := json.Unmarshal([]byte(ReadAllText(p)), &c)
-	if err != nil {
-		log.Warnf("尝试加载配置文件 %v 时出现错误: %v", p, err)
-		log.Infoln("原文件已备份")
-		os.Rename(p, p+".backup"+strconv.FormatInt(time.Now().Unix(), 10))
-		return nil
-	}
-	return &c
-}
-
-func (c *JsonConfig) Save(p string) error {
-	data, err := json.MarshalIndent(c, "", "\t")
-	if err != nil {
-		return err
-	}
-	WriteAllText(p, string(data))
-	return nil
-}
-
-func PathExists(path string) bool {
-	_, err := os.Stat(path)
-	return err == nil || os.IsExist(err)
-}
-
-func ReadAllText(path string) string {
-	b, err := ioutil.ReadFile(path)
-	if err != nil {
-		return ""
-	}
-	return string(b)
-}
-
-func WriteAllText(path, text string) {
-	_ = ioutil.WriteFile(path, []byte(text), 0644)
-}
-
-func PathExecute() string {
-	dir, err := os.Getwd()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(dir)
-
-	return dir + "/"
-}
-
 func main() {
 	log.Printf("Fortune-运势 正在启动")
 	log.Printf("项目地址：https://github.com/Yiwen-Chan/fortune")
@@ -364,4 +291,77 @@ func notSend() bool {
 	} else {
 		return false
 	}
+}
+
+func PathExecute() string {
+	dir, err := os.Getwd()
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(dir)
+
+	return dir + "/"
+}
+
+func DefaultConfig() *JsonConfig {
+	return &JsonConfig{
+		Host:    "127.0.0.1",
+		Port:    8000,
+		Master:  12345678,
+		Trigger: "运势",
+		Setting: []*SettingConfig{
+			{
+				Group: 0,
+				Types: "车万",
+				Limit: "on",
+			},
+			{
+				Group: 87654321,
+				Types: "碧蓝幻想",
+				Limit: "on",
+			},
+		},
+	}
+}
+
+func Load(p string) *JsonConfig {
+	if !PathExists(p) {
+		log.Warnf("尝试加载配置文件 %v 失败: 文件不存在", p)
+		return nil
+	}
+	c := JsonConfig{}
+	err := json.Unmarshal([]byte(ReadAllText(p)), &c)
+	if err != nil {
+		log.Warnf("尝试加载配置文件 %v 时出现错误: %v", p, err)
+		log.Infoln("原文件已备份")
+		os.Rename(p, p+".backup"+strconv.FormatInt(time.Now().Unix(), 10))
+		return nil
+	}
+	return &c
+}
+
+func (c *JsonConfig) Save(p string) error {
+	data, err := json.MarshalIndent(c, "", "\t")
+	if err != nil {
+		return err
+	}
+	WriteAllText(p, string(data))
+	return nil
+}
+
+func PathExists(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil || os.IsExist(err)
+}
+
+func ReadAllText(path string) string {
+	b, err := ioutil.ReadFile(path)
+	if err != nil {
+		return ""
+	}
+	return string(b)
+}
+
+func WriteAllText(path, text string) {
+	_ = ioutil.WriteFile(path, []byte(text), 0644)
 }
