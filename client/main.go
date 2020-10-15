@@ -125,22 +125,6 @@ func PathExecute() string {
 	return dir + "/"
 }
 
-var Note string = ""
-
-func notSend() bool {
-	todayTime := time.Now().Day()
-	today := fmt.Sprintf("%v", todayTime)
-	if Note == "" {
-		Note = today
-		return true
-	} else if Note != today {
-		Note = today
-		return true
-	} else {
-		return false
-	}
-}
-
 func main() {
 	log.Printf("Fortune-运势 正在启动")
 	log.Printf("项目地址：https://github.com/Yiwen-Chan/fortune")
@@ -363,5 +347,21 @@ func pic(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) {
 		fmt.Println(err.Error())
 	} else {
 		_, err = f.Write([]byte(string(body)))
+	}
+}
+
+var Note string = ""
+
+func notSend() bool {
+	todayTime := time.Now().Day()
+	today := fmt.Sprintf("%v", todayTime)
+	if Note == "" {
+		Note = today
+		return true
+	} else if Note != today {
+		Note = today
+		return true
+	} else {
+		return false
 	}
 }
