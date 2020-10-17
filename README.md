@@ -55,11 +55,13 @@
 ## 客户端下载
 | 平台 | 依赖 | 插件地址 | 备注 |
 | --- | --- | --- | --- |
-| [先驱](https://www.xianqubot.com/) | .net framework 4.6.1 | [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.3/fortune-For-XQ-v1.0.3.zip) |  |
-| [先驱](https://www.xianqubot.com/) | [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) |  |
-| [Mirai](https://www.xianqubot.com/) | [Mirai-Native](https://github.com/iTXTech/mirai-native) & [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) |  |
-| [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) |  |
-| [MiraiGo](https://www.xianqubot.com/) | [Go-CQHTTP](https://github.com/Mrs4s/go-cqhttp) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) |  |
+| [先驱](https://www.xianqubot.com/) | .net framework 4.6.1 | [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.3/fortune-For-XQ-v1.0.3.zip) | 已发布 |
+| [先驱](https://www.xianqubot.com/) | [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+| [Mirai](https://www.xianqubot.com/) | [Mirai-Native](https://github.com/iTXTech/mirai-native) & [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+| [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+| [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+| [MiraiGo](https://www.xianqubot.com/) | [Go-CQHTTP](https://github.com/Mrs4s/go-cqhttp) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+| [MiraiGo](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
 
 ## 使用说明
 本项目仅供学习交流，禁止商业化使用，侵删！
