@@ -55,7 +55,7 @@
 ## 客户端下载
 | 平台 | 依赖 | 插件地址 | 备注 |
 | --- | --- | --- | --- |
-| [先驱](https://www.xianqubot.com/) | .net framework 4.6.1 | [Fortune For XQ](https://github.com/Yiwen-Chan/fortune) |  |
+| [先驱](https://www.xianqubot.com/) | .net framework 4.6.1 | [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.3/fortune-For-XQ-v1.0.3.zip) |  |
 | [先驱](https://www.xianqubot.com/) | [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) |  |
 | [Mirai](https://www.xianqubot.com/) | [Mirai-Native](https://github.com/iTXTech/mirai-native) & [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) |  |
 | [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) |  |
