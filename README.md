@@ -2,13 +2,55 @@
 使用Django搭建的运势项目 目标是 共享&自定义
 
 ## 运势池子
-- 车万 @妖
-- 李清歌 @aFox
-- 原神 [@石头](https://github.com/Katou-Kouseki)
-- 阴阳师 [@木理](https://github.com/Yiwen-Chan) 
-- 碧蓝幻想 @饿着吧，笨蛋。
-- 公主连结 [@Lostdegree](https://github.com/Lostdegree)
-- 诺亚幻想 @汐言
+<details>
+<summary>车万</summary>
+
+- 作者：@妖
+- 展示：建设中...
+
+</details>
+<details>
+<summary>李清歌</summary>
+
+- 作者：@aFox
+- 展示：建设中...
+
+</details>
+<details>
+<summary>原神</summary>
+
+- 作者：[@石头](https://github.com/Katou-Kouseki)
+- 展示：建设中...
+
+</details>
+<details>
+<summary>阴阳师</summary>
+
+- 作者：[@木理](https://github.com/Yiwen-Chan) 
+- 展示：建设中...
+
+</details>
+<details>
+<summary>碧蓝幻想</summary>
+
+- 作者：@饿着吧，笨蛋。
+- 展示：建设中...
+
+</details>
+<details>
+<summary>公主连结</summary>
+
+- 作者：[@Lostdegree](https://github.com/Lostdegree)
+- 展示：建设中...
+
+</details>
+<details>
+<summary>诺亚幻想</summary>
+
+- 作者：@汐言
+- 展示：建设中...
+
+</details>
 
 ## 客户端下载
 | 平台 | 依赖 | 插件地址 | 备注 |
