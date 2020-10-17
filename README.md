@@ -70,7 +70,7 @@
 
 先驱版本 >= 2020090301  [下载地址](http://api.xianqubot.com/index.php?newver=beta)
 
-.net framework 4.6.2  [下载地址](https://dotnet.microsoft.com/download/dotnet-framework/net462)
+.net framework 4.6.1  [下载地址](https://dotnet.microsoft.com/download/dotnet-framework/net461)
 
 #### 使用说明：
 
