@@ -257,8 +257,8 @@ D:\github\fortune\client\XQ\fortune\fortune\bin\Debug\System.Threading.Tasks.Ext
 D:\github\fortune\client\XQ\fortune\fortune\bin\Debug\System.ValueTuple.xml
 D:\github\fortune\client\XQ\fortune\fortune\bin\Debug\Unity.Abstractions.pdb
 D:\github\fortune\client\XQ\fortune\fortune\bin\Debug\Unity.Container.pdb
-D:\github\fortune\client\XQ\fortune\fortune\obj\Debug\fortune.csprojAssemblyReference.cache
 D:\github\fortune\client\XQ\fortune\fortune\obj\Debug\fortune.csproj.CoreCompileInputs.cache
 D:\github\fortune\client\XQ\fortune\fortune\obj\Debug\fortune.csproj.CopyComplete
 D:\github\fortune\client\XQ\fortune\fortune\obj\Debug\fortune.dll
 D:\github\fortune\client\XQ\fortune\fortune\obj\Debug\fortune.pdb
+D:\github\fortune\client\XQ\fortune\fortune\obj\Debug\fortune.csprojAssemblyReference.cache
