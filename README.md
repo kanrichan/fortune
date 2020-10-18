@@ -1,57 +1,6 @@
 # fortune-运势
 使用Django搭建的运势项目 目标是 共享&自定义
 
-## 运势池子
-<details>
-<summary>车万</summary>
-
-- 作者：@妖
-- 展示：建设中...
-
-</details>
-<details>
-<summary>李清歌</summary>
-
-- 作者：@aFox
-- 展示：建设中...
-
-</details>
-<details>
-<summary>原神</summary>
-
-- 作者：[@石头](https://github.com/Katou-Kouseki)
-- 展示：建设中...
-
-</details>
-<details>
-<summary>阴阳师</summary>
-
-- 作者：[@木理](https://github.com/Yiwen-Chan) 
-- 展示：建设中...
-
-</details>
-<details>
-<summary>碧蓝幻想</summary>
-
-- 作者：@饿着吧，笨蛋。
-- 展示：建设中...
-
-</details>
-<details>
-<summary>公主连结</summary>
-
-- 作者：[@Lostdegree](https://github.com/Lostdegree)
-- 展示：建设中...
-
-</details>
-<details>
-<summary>诺亚幻想</summary>
-
-- 作者：@汐言
-- 展示：建设中...
-
-</details>
-
 ## 客户端下载
 | 平台 | 依赖 | 插件地址 | 备注 |
 | --- | --- | --- | --- |
@@ -62,6 +11,96 @@
 | [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
 | [MiraiGo](https://www.xianqubot.com/) | [Go-CQHTTP](https://github.com/Mrs4s/go-cqhttp) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
 | [MiraiGo](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+
+## 运势池子
+<details>
+<summary>车万</summary>
+
+- 作者：@妖
+- 展示：
+
+<img width="160" src="/server/server/fortune/data/img/车万/灵梦3.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/车万/妖梦4.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/车万/幽幽子.jpg" alt="example">&emsp;
+
+</details>
+<details>
+<summary>李清歌</summary>
+
+- 作者：@aFox
+- 展示：建设中...
+
+<img width="160" src="/server/server/fortune/data/img/李清歌/2.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/李清歌/9.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/李清歌/11.png" alt="example">&emsp;
+
+</details>
+<details>
+<summary>原神</summary>
+
+- 作者：[@石头](https://github.com/Katou-Kouseki)
+- 展示：建设中...
+
+<img width="160" src="/server/server/fortune/data/img/原神/刻晴.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/原神/芭芭拉.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/原神/重云.jpg" alt="example">&emsp;
+
+</details>
+<details>
+<summary>战双</summary>
+
+- 作者：@汐
+- 展示：建设中...
+
+<img width="160" src="/server/server/fortune/data/img/战双/12.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/战双/17.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/战双/21.png" alt="example">&emsp;
+
+</details>
+<details>
+<summary>阴阳师</summary>
+
+- 作者：[@木理](https://github.com/Yiwen-Chan) 
+- 展示：建设中...
+
+<img width="160" src="/server/server/fortune/data/img/阴阳师/彼岸花.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/阴阳师/青行灯1.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/阴阳师/雪女1.png" alt="example">&emsp;
+
+</details>
+<details>
+<summary>碧蓝幻想</summary>
+
+- 作者：@饿着吧，笨蛋。
+- 展示：建设中...
+
+<img width="160" src="/server/server/fortune/data/img/碧蓝幻想/png15.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/碧蓝幻想/png28.png" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/碧蓝幻想/png85.png" alt="example">&emsp;
+
+</details>
+<details>
+<summary>公主连结</summary>
+
+- 作者：[@Lostdegree](https://github.com/Lostdegree)
+- 展示：建设中...
+
+<img width="160" src="/server/server/fortune/data/img/公主连结/frame_1.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/公主连结/frame_4.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/公主连结/frame_23.jpg" alt="example">&emsp;
+
+</details>
+<details>
+<summary>诺亚幻想</summary>
+
+- 作者：@汐言
+- 展示：建设中...
+
+<img width="160" src="/server/server/fortune/data/img/诺亚幻想/乌鸦4.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/诺亚幻想/鳄鱼4.jpg" alt="example">&emsp;
+<img width="160" src="/server/server/fortune/data/img/诺亚幻想/蝴蝶2.jpg" alt="example">&emsp;
+
+</details>
 
 ## 使用说明
 本项目仅供学习交流，禁止商业化使用，侵删！
