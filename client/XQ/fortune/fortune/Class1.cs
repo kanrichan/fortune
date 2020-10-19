@@ -110,6 +110,7 @@ namespace fortune
                 WriteJson(@configPath);
             }
             XQAPI.OutPutLog("[fortune-运势] 项目地址 https://github.com/Yiwen-Chan/fortune");
+            XQAPI.OutPutLog("[fortune-运势] 配置目录 " + configPath);
             XQAPI.OutPutLog("[fortune-运势] 特别感谢 fz6m https://github.com/fz6m/nonebot-plugin/tree/master/CQVortune");
             XQAPI.OutPutLog("[fortune-运势] 特别感谢 Lostdegree https://github.com/Lostdegree/Portune");
             XQAPI.OutPutLog("[fortune-运势] 想自定义运势背景并共享可加QQ群 1048452984 ");
@@ -171,15 +172,15 @@ namespace fortune
                 e.FromGroup.SendMessage(e.RobotQQ, reply);
 
                 string aukey = "test";
-                string apifortune = "http://127.0.0.1:8000/fortune";
-                string apipic = "http://127.0.0.1:8000/fortune.jpg";
+                string apifortune = "127.0.0.1:8000";
+                string apipic = "127.0.0.1:8000";
 
                 FromDataParm fromDataParm;
                 fromDataParm.Client = "xq";
-                fromDataParm.Version = "3";
+                fromDataParm.Version = "4";
                 fromDataParm.Bot = robot;
                 fromDataParm.Types = types;
-                fromDataParm.FromGroup = group;
+                fromDataParm.FromGroup = e.FromGroup.Id;
                 fromDataParm.FromQQ = user;
                 fromDataParm.Ask = text;
                 fromDataParm.Limit = limit;
@@ -204,14 +205,23 @@ namespace fortune
 
                 if (code != "200")
                 {
-                    message += "[fortune-运势] 服务器失联中......";
-                    e.FromGroup.SendMessage(e.RobotQQ, message);
-                    return;
+                    if (msg != "")
+                    {
+                        message += msg;
+                        e.FromGroup.SendMessage(e.RobotQQ, message);
+                        return;
+                    } else
+                    {
+                        message += "[fortune-运势] 服务器失联中......";
+                        e.FromGroup.SendMessage(e.RobotQQ, message);
+                        return;
+                    }
                 }
                 if (msg != "success")
                 {
                     message += msg;
                     e.FromGroup.SendMessage(e.RobotQQ, message);
+                    return;
                 }
                 if (warn != "")
                 {

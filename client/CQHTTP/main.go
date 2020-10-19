@@ -44,7 +44,6 @@ type FortuneJson struct {
 type JsonConfig struct {
 	Host    string           `json:"WS服务器"`
 	Port    uint16           `json:"WS端口"`
-	Bot     int64            `json:"机器人QQ"`
 	Setting []*SettingConfig `json:"运势设置"`
 }
 
@@ -91,6 +90,11 @@ func main() {
 
 	log.Printf("Fortune-运势 启动完毕，正在运行")
 
+	bot_info, err := bot.GetLoginInfo()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	for update := range updates {
 		//message类信息触发
 		if update.PostType == "message" {
@@ -136,7 +140,7 @@ func main() {
 
 				client := "go"
 				version := "4"
-				botQQ := fmt.Sprintf("%v", conf.Bot)
+				botQQ := fmt.Sprintf("%v", bot_info.ID)
 				types := types
 				fromGroup := fmt.Sprintf("%v", groupID)
 				fromQQ := fmt.Sprintf("%v", userID)
@@ -248,7 +252,7 @@ func fortune(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) (Fo
 
 	req, err := http.NewRequest("POST", api, fromdata)
 	if err != nil {
-		panic(err)
+		log.Error(err)
 	}
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
@@ -257,7 +261,7 @@ func fortune(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) (Fo
 
 	resp, err := client.Do(req)
 	if err != nil {
-		panic(err)
+		log.Error(err)
 	}
 
 	defer resp.Body.Close()
@@ -266,12 +270,12 @@ func fortune(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) (Fo
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		panic(err)
+		log.Error(err)
 	}
 	fortuneJson := FortuneJson{}
 	err = json.Unmarshal(body, &fortuneJson)
 	if err != nil {
-		panic(err)
+		log.Error(err)
 	}
 
 	return fortuneJson, code
@@ -300,7 +304,7 @@ func pic(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) {
 
 	req, err := http.NewRequest("POST", api, fromdata)
 	if err != nil {
-		panic(err)
+		log.Error(err)
 	}
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
@@ -309,14 +313,14 @@ func pic(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		panic(err)
+		log.Error(err)
 	}
 
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		panic(err)
+		log.Error(err)
 	}
 
 	f, err := os.OpenFile("output.jpg", os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0600)
@@ -358,7 +362,6 @@ func DefaultConfig() *JsonConfig {
 	return &JsonConfig{
 		Host: "127.0.0.1",
 		Port: 8000,
-		Bot:  12345678,
 		Setting: []*SettingConfig{
 			{
 				Group:   "默认",
