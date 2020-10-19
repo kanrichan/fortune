@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
 
-[assembly: XQPlugin("fortune-运势", "木理", "1.0.3", "Lucky!")]
+[assembly: XQPlugin("fortune-运势", "木理", "1.0.4", "项目地址 https://github.com/Yiwen-Chan/fortune")]
 
 namespace fortune
 {
