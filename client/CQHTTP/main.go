@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"net/url"
 	"os"
@@ -18,12 +19,14 @@ import (
 )
 
 type FromDataParm struct {
-	Client  string
-	Version string
-	Types   string
-	FromQQ  string
-	Ask     string
-	Limit   string
+	Client    string
+	Version   string
+	Bot       string
+	Types     string
+	FromGroup string
+	FromQQ    string
+	Ask       string
+	Limit     string
 }
 
 type HeaderParm struct {
@@ -39,17 +42,18 @@ type FortuneJson struct {
 }
 
 type JsonConfig struct {
-	Host    string           `json:"host"`
-	Port    uint16           `json:"port"`
-	Master  int64            `json:"master"`
-	Trigger string           `json:"trigger"`
-	Setting []*SettingConfig `json:"setting"`
+	Host    string           `json:"WS服务器"`
+	Port    uint16           `json:"WS端口"`
+	Bot     int64            `json:"机器人QQ"`
+	Setting []*SettingConfig `json:"运势设置"`
 }
 
 type SettingConfig struct {
-	Group int64  `json:"group"`
-	Types string `json:"types"`
-	Limit string `json:"limit"`
+	Group   string `json:"群号"`
+	Trigger string `json:"触发"`
+	Reply   string `json:"回复"`
+	Types   string `json:"类型"`
+	Limit   string `json:"限制"`
 }
 
 func main() {
@@ -90,26 +94,66 @@ func main() {
 	for update := range updates {
 		//message类信息触发
 		if update.PostType == "message" {
-			if update.Message.Text == conf.Trigger {
-				groupID := update.GroupID
-				userID := update.UserID
 
-				log.Printf("[%s] %s", update.Message.From.String(), update.Message.Text)
+			groupID := update.GroupID
+			userID := update.UserID
+			text := update.Message.Text
 
-				setting := returnSetting(conf, groupID)
-				types := setting.Types
+			setting := returnSetting(conf, groupID)
+
+			trigger := setting.Trigger
+			reply := setting.Reply
+			types := setting.Types
+			limit := setting.Limit
+
+			Types := ""
+
+			if strings.Contains(types, "|") {
+				list := strings.Split(types, "|")
+				length := len(list)
+				ran := rand.Intn(length)
+				Types = list[ran]
+			}
+
+			types = Types
+
+			if limit == "全局" {
+				limit = "on"
+			} else if limit == "池子" {
+				limit = "none"
+			} else if limit == "关" {
+				limit = "off"
+			} else {
+				limit = "none"
+			}
+
+			if text == trigger && trigger != "关" {
+
+				log.Printf("[%s] %s", update.Message.From.String(), text)
+				if reply != "" {
+					bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, reply)
+				}
+
+				client := "go"
+				version := "4"
+				botQQ := fmt.Sprintf("%v", conf.Bot)
+				types := types
+				fromGroup := fmt.Sprintf("%v", groupID)
 				fromQQ := fmt.Sprintf("%v", userID)
-				ask := conf.Trigger
-				limit := setting.Limit
+				ask := text
+				limit := limit
 
 				fromDataParm := &FromDataParm{
-					"go",
-					"3",
+					client,
+					version,
+					botQQ,
 					types,
+					fromGroup,
 					fromQQ,
 					ask,
 					limit,
 				}
+
 				authkey, au_time := key("test")
 				headerParm := &HeaderParm{
 					authkey,
@@ -118,51 +162,51 @@ func main() {
 
 				apiFortune := "http://127.0.0.1:8000/fortune"
 				apiPic := "http://127.0.0.1:8000/fortune.jpg"
-				fortuneJson := fortune(apiFortune, fromDataParm, headerParm)
+				fortuneJson, code := fortune(apiFortune, fromDataParm, headerParm)
 
 				Message := ""
-				path := PathExecute() + "test.jpg"
-				if fortuneJson.Code == 200 {
-					if fortuneJson.Msg == "success" {
-						if fortuneJson.Warn != "" {
-							Message = fortuneJson.Warn
-							pic(apiPic, fromDataParm, headerParm)
-							Message += "[CQ:image,file=file:///" + path + "]"
-							bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
-						} else {
-							if fortuneJson.Info != "" {
-								if notSend() {
-									Message = fortuneJson.Info
-								}
-								pic(apiPic, fromDataParm, headerParm)
-								Message += "[CQ:image,file=file:///" + path + "]"
-								bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
-							} else {
-								pic(apiPic, fromDataParm, headerParm)
-								Message += "[CQ:image,file=file:///" + path + "]"
-								bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
-							}
-						}
-					} else {
-						Message = fortuneJson.Msg
-						bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
-					}
-				} else {
+				path := PathExecute() + "output.jpg"
+
+				if code != 200 {
 					//服务器无响应
-					Message = "服务器失去连接，请到GitHub提交issue"
+					Message = "[fortune-运势] 服务器失联中......"
+					Message += fmt.Sprintf(" code: %v", code)
+					bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
+				} else if fortuneJson.Code != 200 {
+					//服务器状态异常
+					Message = fortuneJson.Msg
+					bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
+				} else if fortuneJson.Msg != "success" {
+					Message = fortuneJson.Msg
+					bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
+				} else if fortuneJson.Warn != "" {
+					Message = fortuneJson.Warn
+					pic(apiPic, fromDataParm, headerParm)
+					Message += "[CQ:image,file=file:///" + path + "]"
+					bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
+				} else if fortuneJson.Info != "" {
+					if notSend() {
+						Message = fortuneJson.Info
+					}
+					pic(apiPic, fromDataParm, headerParm)
+					Message += "[CQ:image,file=file:///" + path + "]"
+					bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
+				} else {
+					pic(apiPic, fromDataParm, headerParm)
+					Message += "[CQ:image,file=file:///" + path + "]"
 					bot.SendMessage(update.Message.Chat.ID, update.Message.Chat.Type, Message)
 				}
-
 			}
 		}
 	}
 }
 
 func returnSetting(conf *JsonConfig, groupID int64) *SettingConfig {
+	group := fmt.Sprintf("%v", groupID)
 	setting := conf.Setting[0]
 	for index, _ := range conf.Setting {
 		settingCache := conf.Setting[index]
-		if groupID == settingCache.Group {
+		if group == settingCache.Group {
 			setting := settingCache
 			return setting
 		}
@@ -181,11 +225,13 @@ func key(au_key string) (string, string) {
 	return authkey, au_time
 }
 
-func fortune(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) FortuneJson {
+func fortune(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) (FortuneJson, int) {
 	data := url.Values{}
 	data.Set("client", fromDataParm.Client)
 	data.Set("version", fromDataParm.Version)
+	data.Set("bot", fromDataParm.Bot)
 	data.Set("types", fromDataParm.Types)
+	data.Set("fromGroup", fromDataParm.FromGroup)
 	data.Set("fromQQ", fromDataParm.FromQQ)
 	data.Set("ask", fromDataParm.Ask)
 	data.Set("limit", fromDataParm.Limit)
@@ -215,6 +261,8 @@ func fortune(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) For
 	}
 
 	defer resp.Body.Close()
+
+	code := resp.StatusCode
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -225,14 +273,17 @@ func fortune(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) For
 	if err != nil {
 		panic(err)
 	}
-	return fortuneJson
+
+	return fortuneJson, code
 }
 
 func pic(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) {
 	data := url.Values{}
 	data.Set("client", fromDataParm.Client)
 	data.Set("version", fromDataParm.Version)
+	data.Set("bot", fromDataParm.Bot)
 	data.Set("types", fromDataParm.Types)
+	data.Set("fromGroup", fromDataParm.FromGroup)
 	data.Set("fromQQ", fromDataParm.FromQQ)
 	data.Set("ask", fromDataParm.Ask)
 	data.Set("limit", fromDataParm.Limit)
@@ -268,7 +319,7 @@ func pic(api string, fromDataParm *FromDataParm, headerParm *HeaderParm) {
 		panic(err)
 	}
 
-	f, err := os.OpenFile("test.jpg", os.O_WRONLY|os.O_TRUNC, 0600)
+	f, err := os.OpenFile("output.jpg", os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0600)
 	defer f.Close()
 	if err != nil {
 		fmt.Println(err.Error())
@@ -305,20 +356,37 @@ func PathExecute() string {
 
 func DefaultConfig() *JsonConfig {
 	return &JsonConfig{
-		Host:    "127.0.0.1",
-		Port:    8000,
-		Master:  12345678,
-		Trigger: "运势",
+		Host: "127.0.0.1",
+		Port: 8000,
+		Bot:  12345678,
 		Setting: []*SettingConfig{
 			{
-				Group: 0,
-				Types: "车万",
-				Limit: "on",
+				Group:   "默认",
+				Trigger: "运势",
+				Reply:   "少女祈祷中......",
+				Types:   "李清歌|碧蓝幻想|公主连结",
+				Limit:   "全局",
 			},
 			{
-				Group: 87654321,
-				Types: "碧蓝幻想",
-				Limit: "on",
+				Group:   "单个群设置填群号",
+				Trigger: "这里填触发关键词",
+				Reply:   "这里填收到关键词的回复",
+				Types:   "这里是池子类型，多个池子用|分开",
+				Limit:   "每天限制一张，可填 全局 池子 关",
+			},
+			{
+				Group:   "00000000",
+				Trigger: "抽签",
+				Reply:   "少女折寿中......",
+				Types:   "车万",
+				Limit:   "池子",
+			},
+			{
+				Group:   "1048452984",
+				Trigger: "运势测试",
+				Reply:   "收到命令！",
+				Types:   "李清歌",
+				Limit:   "关",
 			},
 		},
 	}
