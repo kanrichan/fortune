@@ -4,12 +4,12 @@
 ## 客户端下载
 | 平台 | 依赖 | 插件地址 | 备注 |
 | --- | --- | --- | --- |
-| [先驱](https://www.xianqubot.com/) | .net framework 4.6.1 | [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.3/fortune-For-XQ-v1.0.3.zip) | 已发布 |
-| [先驱](https://www.xianqubot.com/) | [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) | 待发布 |
-| [Mirai](https://www.xianqubot.com/) | [Mirai-Native](https://github.com/iTXTech/mirai-native) & [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune) | 待发布 |
-| [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+| [先驱](https://www.xianqubot.com/) | [.NET Framework 4.6.1](https://dotnet.microsoft.com/download/dotnet-framework/net461) | [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-XQ-v1.0.4.zip) | 已发布 |
+| [先驱](https://www.xianqubot.com/) | [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-EPK-v1.0.4.zip) | 已发布 |
+| [Mirai](https://www.xianqubot.com/) | [Mirai-Native](https://github.com/iTXTech/mirai-native) & [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-EPK-v1.0.4.zip) | 已发布 |
+| [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For GO](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-GO-v1.0.4.exe) | 已发布 |
 | [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
-| [MiraiGo](https://www.xianqubot.com/) | [Go-CQHTTP](https://github.com/Mrs4s/go-cqhttp) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
+| [MiraiGo](https://www.xianqubot.com/) | [Go-CQHTTP](https://github.com/Mrs4s/go-cqhttp) | [Fortune For GO](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-GO-v1.0.4.exe) | 已发布 |
 | [MiraiGo](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
 
 ## 运势池子
@@ -104,7 +104,9 @@
 
 ## 使用说明
 本项目仅供学习交流，禁止商业化使用，侵删！
-### 先驱
+
+### Fortune For XQ
+
 #### 环境要求：
 
 先驱版本 >= 2020090301  [下载地址](http://api.xianqubot.com/index.php?newver=beta)
@@ -113,7 +115,7 @@
 
 #### 使用说明：
 
-1.下载 fortune-运势.XQ.dll
+1.下载 [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-XQ-v1.0.4.zip) 并解压
 
 2.将 dll文件 复制到 先驱\Plugin\ 路径下
 
@@ -137,6 +139,94 @@
     },
 }
 ```
+### Fortune For EPK
+
+#### 环境要求：
+
+##### 方案一：
+
+先驱版本 >= 2020090301  [下载地址](http://api.xianqubot.com/index.php?newver=beta)
+
+铃心自定义 for XQ - C  [下载地址](http://qm.myepk.club/variable/)
+
+##### 方案二：
+
+Mirai Consloe Loader [下载地址](https://github.com/iTXTech/mirai-console-loader)
+
+铃心自定义 DLL 版本 请自行加[铃心自定义](http://qm.myepk.club/variable/)QQ群获取
+
+#### 使用说明：
+
+1.下载 [Fortune For EPK](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-EPK-v1.0.4.zip) 并解压
+
+2.启动铃心自定义并启动插件,打开控制面板
+
+3.在左上角导入选择上述解压的 fortune-EPK-v1.0.4.epk 文件
+
+4.修改自定义设置
+
+#### 插件设置：
+
+设置路径为：框架目录\data\app\club.myepk.customReply\fortune-运势.ini
+
+设置说明如下：
+
+```
+[默认]  //填群号，表示该群设置
+触发=开  //为关则不会触发，关键词修改请在铃心自定义面板
+回复=少女祈祷中......  //收到关键词立刻回复内容
+类型=李清歌|碧蓝幻想|公主连结  //池子见上方，多个池子用 " | " 隔开
+限制=全局  //每日生成限制 【全局】为所有池子当天只生成一次 【池子】为当前池子当天生成一次 【关】当天无限制生成，仅用于测试
+```
+
+### Fortune For GO
+#### 环境要求：
+
+##### 方案一：
+
+Mirai 启动器 mirua (mirai-console = 1.0M4) [下载地址](https://github.com/zkonge/mirua)
+
+CQHTTP-MIRAI (0.2.4-SNAPSHOT-1.0-M4) [下载地址](https://github.com/XZhouQD/cqhttp-mirai/releases/tag/0.2.4-SNAPSHOT-1.0-M4)
+
+##### 方案二：
+
+GO-CQHTTP [下载地址](https://github.com/Mrs4s/go-cqhttp)
+
+#### 使用说明：
+
+1.下载 [Fortune For GO](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-GO-v1.0.4.exe)
+
+2.双击启动，注意暂时只有 win 64位 版本，如果需要其他请提交 issue
+
+3.修改自定义设置
+
+#### 插件设置：
+
+设置路径为：fortune-GO-v1.0.4.exe 同级目录的 config.json
+
+设置说明如下：
+
+```
+[默认]  //填群号，表示该群设置
+触发=开  //为关则不会触发，关键词修改请在铃心自定义面板
+回复=少女祈祷中......  //收到关键词立刻回复内容
+类型=李清歌|碧蓝幻想|公主连结  //池子见上方，多个池子用 " | " 隔开
+限制=全局  //每日生成限制 【全局】为所有池子当天只生成一次 【池子】为当前池子当天生成一次 【关】当天无限制生成，仅用于测试
+{
+	"WS服务器": "127.0.0.1",  //正向WS HOST，需要CQHTTP服务端设置正向WS为开，并且地址要对应
+	"WS端口": 8000,  //正向WS PORT，需要CQHTTP服务端设置正向WS为开，并且端口要对应
+	"运势设置": [  //无需修改
+		{
+			"群号": "默认",  //填群号，表示该群设置
+			"触发": "运势",  //触发关键词，若为关则本群不会被触发
+			"回复": "少女祈祷中......",  //收到关键词立刻回复内容
+			"类型": "李清歌|碧蓝幻想|公主连结",  //池子见上方，多个池子用 " | " 隔开
+			"限制": "全局"  //每日生成限制 【全局】为所有池子当天只生成一次 【池子】为当前池子当天生成一次 【关】当天无限制生成，仅用于测试
+		}
+    ]
+}
+```
+
 
 ## 致谢
 ### 特别感谢
