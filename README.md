@@ -71,7 +71,7 @@
 <details>
 <summary>碧蓝幻想</summary>
 
-- 作者：@饿着吧，笨蛋。
+- 作者：@一位不愿意透露姓名的神秘人
 - 展示：
 
 <img width="160" src="/server/server/fortune/data/img/碧蓝幻想/png15.png" alt="example">&emsp;
