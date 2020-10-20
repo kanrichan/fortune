@@ -1,6 +1,10 @@
 # fortune-运势
 使用Django搭建的运势项目 目标是 共享&自定义
 
+![Badge](https://img.shields.io/badge/OneBot-v11-black)
+[![License](https://img.shields.io/github/license/Yiwen-Chan/fortune.svg)](https://raw.githubusercontent.com/Yiwen-Chan/fortune/master/LICENSE)
+[![QQ 群](https://img.shields.io/badge/qq%E7%BE%A4-1048452984-green.svg)](https://jq.qq.com/?_wv=1027&k=QMb7x1mM)
+
 ## 客户端下载
 | 平台 | 依赖 | 插件地址 | 备注 |
 | --- | --- | --- | --- |
