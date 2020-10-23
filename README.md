@@ -107,7 +107,8 @@
 </details>
 
 ## 使用说明
-本项目仅供学习交流，禁止商业化使用，侵删！
+- 本插件采用 [MIT许可协议](https://raw.githubusercontent.com/Yiwen-Chan/fortune/master/LICENSE) 使用请遵守许可协议
+- 本插件一切开发旨在学习，请勿用于非法用途
 
 ### Fortune For XQ
 
