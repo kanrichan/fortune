@@ -132,7 +132,7 @@
 
 设置路径为：先驱\Config\fortune-运势\config.json
 
-设置说明如下：
+设置说明如下：（不小心设置错误请删除该配置文件，重启框架会自动生成）
 
 ```
 {
@@ -174,7 +174,7 @@ Mirai Consloe Loader [下载地址](https://github.com/iTXTech/mirai-console-loa
 
 设置路径为：框架目录\data\app\club.myepk.customReply\fortune-运势.ini
 
-设置说明如下：
+设置说明如下：（不小心设置错误请删除该配置文件，重启框架会自动生成）
 
 ```
 [默认]  //填群号，表示该群设置
@@ -209,7 +209,7 @@ GO-CQHTTP [下载地址](https://github.com/Mrs4s/go-cqhttp)
 
 设置路径为：fortune-GO-v1.0.4.exe 同级目录的 config.json
 
-设置说明如下：
+设置说明如下：（不小心设置错误请删除该配置文件，重启框架会自动生成）
 
 ```
 {
