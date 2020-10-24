@@ -230,5 +230,5 @@ GO-CQHTTP [下载地址](https://github.com/Mrs4s/go-cqhttp)
 
 ## 致谢
 ### 特别感谢
-- 此项目代码修改来自 [@fz6m](https://github.com/fz6m) 的 [项目-Vortune](https://github.com/fz6m/nonebot-plugin/tree/master/CQVortune) 
+- 此项目绘图代码来自 [@fz6m](https://github.com/fz6m) 的 [项目-Vortune](https://github.com/fz6m/nonebot-plugin/tree/master/CQVortune) 
 - 此项目背景模板来自 [@Lostdegree](https://github.com/Lostdegree) 的 [项目-Portune](https://github.com/Lostdegree/Portune)
