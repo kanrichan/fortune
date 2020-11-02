@@ -1,5 +1,9 @@
 # fortune-运势
-使用Django搭建的运势项目 目标是 共享&自定义
+服务端基于Django，python pillow库绘图
+
+客户端支持多种框架及协议
+
+目标是共享运势牌库
 
 ![Badge](https://img.shields.io/badge/OneBot-v11-black)
 [![License](https://img.shields.io/github/license/Yiwen-Chan/fortune.svg)](https://raw.githubusercontent.com/Yiwen-Chan/fortune/master/LICENSE)
