@@ -12,7 +12,7 @@
 ## 客户端下载
 | 平台 | 依赖 | 插件地址 | 备注 |
 | --- | --- | --- | --- |
-| [先驱](https://www.xianqubot.com/) | [.NET Framework 4.6.1](https://dotnet.microsoft.com/download/dotnet-framework/net461) | [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-XQ-v1.0.4.zip) | 已发布 |
+| [先驱](https://www.xianqubot.com/) | 按道理正常电脑就能跑 | [Fortune For XQ v1.0.5](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.5/fortune-XQ-v1.0.5.zip) | 已发布 |
 | [先驱](https://www.xianqubot.com/) | [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-EPK-v1.0.4.zip) | 已发布 |
 | [Mirai](https://www.xianqubot.com/) | [Mirai-Native](https://github.com/iTXTech/mirai-native) & [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-EPK-v1.0.4.zip) | 已发布 |
 | [Mirai](https://www.xianqubot.com/) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For GO](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-GO-v1.0.4.exe) | 已发布 |
@@ -120,13 +120,11 @@
 
 先驱版本 >= 2020090301  [下载地址](http://api.xianqubot.com/index.php?newver=beta)
 
-.NET Framework 4.6.1  [下载地址](https://dotnet.microsoft.com/download/dotnet-framework/net461)
-
 #### 使用说明：
 
-1.下载 [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-XQ-v1.0.4.zip) 并解压
+1.下载 [Fortune For XQ](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.5/fortune-XQ-v1.0.5.zip) 并解压
 
-2.将 dll文件 复制到 先驱\Plugin\ 路径下
+2.将 dll 文件 复制到 先驱\Plugin\ 路径下
 
 3.重启先驱，启动插件 fortune-运势
 
@@ -134,20 +132,20 @@
 
 #### 插件设置：
 
-设置路径为：先驱\Config\fortune-运势\config.json
+设置路径为：先驱\data\app\fortune\config.yml
 
 设置说明如下：（不小心设置错误请删除该配置文件，重启框架会自动生成）
 
 ```
-{
-    '默认': {  //填群号，表示该群设置
-        '触发': '运势',  //触发关键词，若为关则本群不会被触发
-        '回复': '少女祈祷中......',  //收到关键词立刻回复内容
-        '类型': '李清歌|碧蓝幻想|公主连结',  //池子见上方，多个池子用 " | " 隔开
-        '限制': '全局'  //每日生成限制 【全局】为所有池子当天只生成一次 【池子】为当前池子当天生成一次 【关】当天无限制生成，仅用于测试
-    },
-}
+- 设置群号: 默认  //填群号，默认即下面没有配置群的时候统一采用此配置
+  群聊设置:
+    触发词语: 运势  //填触发关键词
+    等待回复: 少女祈祷中......  //填收到回复立刻回复的语句，可为空
+    卡池类型: 李清歌|碧蓝幻想|公主连结  //请看上面展示的池子，多个池子用 | 分隔
+    每日限制: 全局文字  //全局 为所有池子只能抽一次，池子 为当前池子只能抽一次，关 为不做限制；图片 为抽过仍继续回复相同图片，文字 为抽过了就回复文字
+    超过警告: 今天已经抽过了，请明天再来吧~  //当每日限制是 全局文字 或 池子文字 时，同一个人当天抽过的情况下，回复此项文字
 ```
+注意：修改配置后请重启框架或给机器人发送 "ft -reload" 重载配置文件（" "不要）
 ### Fortune For EPK
 
 #### 环境要求：
