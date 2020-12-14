@@ -86,26 +86,26 @@ func getSetting(conf *YamlConfig, groupID string) *SettingConfig {
 
 func Load(p string) *YamlConfig {
 	if !PathExists(p) {
-		OutPutLog("[fortune-运势] 尝试加载配置文件失败: 文件不存在")
-		return nil
+		c := DefaultConfig()
+		c.Save(p)
 	}
 	c := YamlConfig{}
 	err := yaml.Unmarshal([]byte(ReadAllText(p)), &c)
 	if err != nil {
-		OutPutLog("[fortune-运势] 尝试加载配置文件失败: 读取文件失败")
-		OutPutLog("[fortune-运势] 原配置文件已备份")
+		ERROR("Emmm，夜夜觉得配置文件有问题")
 		os.Rename(p, p+".backup"+strconv.FormatInt(time.Now().Unix(), 10))
-		return nil
+		c := DefaultConfig()
+		c.Save(p)
 	}
+	INFO("おはようございます。")
+	c.Save(p)
 	return &c
 }
 
-func (c *YamlConfig) Save(p string) error {
+func (c *YamlConfig) Save(p string) {
 	data, err := yaml.Marshal(c)
 	if err != nil {
-		OutPutLog("[fortune-运势] 写入新的配置文件失败")
-		return err
+		ERROR("大失败！夜夜需要管理员权限")
 	}
 	WriteAllText(p, string(data))
-	return nil
 }

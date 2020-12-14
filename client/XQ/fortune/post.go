@@ -60,7 +60,6 @@ func getHeader(clientKey string) *HeaderParm {
 
 func key(au_key string) (string, string) {
 	au_time := fmt.Sprintf("%v", time.Now().Unix())
-	OutPutLog(au_time)
 	au_key_time := fmt.Sprintf("%v|%v", au_key, au_time)
 
 	m := md5.New()
@@ -81,40 +80,29 @@ func fortune(api string, fromDataStruct *FromDataStruct, headerParm *HeaderParm)
 	fromData := getFromData(fromDataStruct)
 
 	req, err := http.NewRequest("POST", api, fromData)
-	if err != nil {
-		OutPutLog("[fortune-运势] 创建POST请求失败")
-	}
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Set("authkey", headerParm.Authkey)
 	req.Header.Set("autime", headerParm.Au_time)
 
 	resp, err := client.Do(req)
-	if err != nil {
-		OutPutLog("[fortune-运势] POST请求失败")
-	}
-
 	defer resp.Body.Close()
+	if err != nil {
+		ERROR("[GET INFO] 网络错误 ❌")
+	}
 
 	code := resp.StatusCode
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		OutPutLog("[fortune-运势] 读取POST请求数据失败")
-	}
+	body, _ := ioutil.ReadAll(resp.Body)
 	fortuneJson := FortuneJson{}
-
-	err = json.Unmarshal(body, &fortuneJson)
-	if err != nil {
-		OutPutLog("[fortune-运势] 解析JSON失败")
-	}
+	_ = json.Unmarshal(body, &fortuneJson)
 
 	f, err := os.OpenFile(ResultPath, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0644)
 	defer f.Close()
 	if err != nil {
-		OutPutLog("[fortune-运势] 写入请求结果文件失败")
+		ERROR("[GET INFO] 写入信息错误 ❌")
 	} else {
-		_, err = f.Write([]byte(string(body)))
+		f.Write(body)
 	}
 
 	return fortuneJson, code
@@ -131,32 +119,25 @@ func pic(api string, fromDataStruct *FromDataStruct, headerParm *HeaderParm) {
 
 	fromData := getFromData(fromDataStruct)
 
-	req, err := http.NewRequest("POST", api, fromData)
-	if err != nil {
-		OutPutLog("[fortune-运势] 创建POST请求失败")
-	}
+	req, _ := http.NewRequest("POST", api, fromData)
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Set("authkey", headerParm.Authkey)
 	req.Header.Set("autime", headerParm.Au_time)
 
 	resp, err := client.Do(req)
-	if err != nil {
-		OutPutLog("[fortune-运势] POST请求失败")
-	}
-
 	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		OutPutLog("[fortune-运势] 读取POST请求数据失败")
+		ERROR("[GET PIC] 网络错误 ❌")
 	}
+
+	body, _ := ioutil.ReadAll(resp.Body)
 
 	f, err := os.OpenFile(PicPath, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0644)
 	defer f.Close()
 	if err != nil {
-		OutPutLog("[fortune-运势] 写入图片文件失败")
+		ERROR("[GET PIC] 写入图片错误 ❌")
 	} else {
-		_, err = f.Write([]byte(string(body)))
+		f.Write(body)
 	}
 }

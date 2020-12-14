@@ -15,8 +15,8 @@ var ApiPort = "10086"
 var ApiFortune = "http://" + ApiHost + ":" + ApiPort + "/fortune"
 var ApiPic = "http://" + ApiHost + ":" + ApiPort + "/fortune.jpg"
 
-var ClientKey = "233666"
-var ClientName = "xq"
+var ClientKey = "31415926"
+var ClientName = "go"
 var ClientVer = "5"
 
 var AppPath = strings.Replace(PathExecute(), ":\\", ":\\\\", -1) + "data\\"
@@ -27,6 +27,13 @@ var ResultPath = AppPath + "output.txt"
 var Conf = &YamlConfig{}
 
 func init() {
+	OutPutLog(`
+====================[fortune-运势]====================
+* OneBot + ZeroBot + Golang
+* Copyright © 2018-2020 Kanri,All Rights Reserved
+* Project: https://github.com/Yiwen-Chan/fortune
+=======================================================
+`)
 	a := testPlugin{}
 	zero.RegisterPlugin(a) // 注册插件
 }
@@ -37,8 +44,8 @@ func (testPlugin) GetPluginInfo() zero.PluginInfo { // 返回插件信息
 	return zero.PluginInfo{
 		Author:     "kanri",
 		PluginName: "fortune-运势",
-		Version:    "1.0.5",
-		Details:    "项目地址 https://github.com/Yiwen-Chan/fortune",
+		Version:    "1.0.6",
+		Details:    "",
 	}
 }
 
@@ -47,6 +54,15 @@ func (testPlugin) Start() { // 插件主体
 		Handle(
 			func(matcher *zero.Matcher, event zero.Event, state zero.State) zero.Response {
 				App(0, 0, event.GroupID, event.UserID, event.RawMessage)
+				if event.RawMessage == "ft -v" || event.RawMessage == "ft -version" {
+					OutPutLog("Fortune-运势 Version 1.0.6 BY Kanri")
+					AllSendMsg(0, event.GroupID, event.UserID, "Fortune-运势 Version 1.0.6 BY Kanri")
+				}
+				if event.RawMessage == "ft -r" || event.RawMessage == "ft -reload" {
+					Init()
+					OutPutLog("Setting is already reload!")
+					AllSendMsg(0, event.GroupID, event.UserID, "Setting is already reload!")
+				}
 				return zero.SuccessResponse
 			},
 		)
@@ -65,7 +81,6 @@ func OutPutLog(str string) {
 }
 
 func Init() {
-	OutPutLog("本插件基于 ZeroBot 开发")
 	err := CreatePath(AppPath)
 	if err != nil {
 		OutPutLog("创建应用文件夹时出现错误")
@@ -82,11 +97,8 @@ func Init() {
 		OutPutLog("[fortune-运势] 检测到初次运行本插件，已生成默认配置文件")
 		OutPutLog("[fortune-运势] 特别感谢 fz6m https://github.com/fz6m/nonebot-plugin/tree/master/CQVortune")
 		OutPutLog("[fortune-运势] 特别感谢 Lostdegree https://github.com/Lostdegree/Portune")
-		OutPutLog("[fortune-运势] 有需要请按GitHub项目上描述的方法修改配置文件")
+		OutPutLog("[fortune-运势] 有需要请按 GitHub 项目上描述的方法修改配置文件")
 	}
-	OutPutLog("[fortune-运势] 项目地址 https://github.com/Yiwen-Chan/fortune")
-	OutPutLog("[fortune-运势] 配置文件 XQ/data/app/fortune/config.yml")
-	OutPutLog("[fortune-运势] 想自定义运势背景并共享可加QQ群 1048452984 ")
 }
 
 // 应用函数
@@ -113,6 +125,7 @@ func App(botID int64, messageID int64, groupID int64, userID int64, message stri
 		headerParm := getHeader(ClientKey)
 
 		// 获得服务器数据
+		OutPutLog("[fortune-运势] Connect to the fortune server......")
 		fortuneJson, code := fortune(ApiFortune, fromDataStruct, headerParm)
 
 		// 开始处理信息提交方式
@@ -155,6 +168,7 @@ func App(botID int64, messageID int64, groupID int64, userID int64, message stri
 			text += "[CQ:image,file=file:///" + PicPath + "]"
 			AllSendMsg(botID, groupID, userID, text)
 		}
+		OutPutLog("[fortune-运势] Task complete......")
 	}
 }
 
