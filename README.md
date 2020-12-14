@@ -15,9 +15,9 @@
 | [先驱](https://www.xianqubot.com/) | 按道理正常电脑就能跑 | [Fortune For XQ v1.0.6](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.6/fortune-for-XQ.zip) | 已发布 |
 | [先驱](https://www.xianqubot.com/) | [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-EPK-v1.0.4.zip) | 已发布 |
 | [Mirai](https://github.com/mamoe/mirai) | [Mirai-Native](https://github.com/iTXTech/mirai-native) & [铃心自定义](http://qm.myepk.club/variable/) | [Fortune For EPK](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.4/fortune-EPK-v1.0.4.zip) | 已发布 |
-| [Mirai](https://github.com/mamoe/mirai) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For GO v1.0.6]](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.6/fortune-for-GO.zip) | 已发布 |
+| [Mirai](https://github.com/mamoe/mirai) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) | [Fortune For GO v1.0.6](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.6/fortune-for-GO.zip) | 已发布 |
 | [Mirai](https://github.com/mamoe/mirai) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
-| [MiraiGo](https://github.com/Mrs4s/MiraiGo) | [Go-CQHTTP](https://github.com/Mrs4s/go-cqhttp) | [Fortune For GO v1.0.6]](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.6/fortune-for-GO.zip) | 已发布 |
+| [MiraiGo](https://github.com/Mrs4s/MiraiGo) | [Go-CQHTTP](https://github.com/Mrs4s/go-cqhttp) | [Fortune For GO v1.0.6](https://github.com/Yiwen-Chan/fortune/releases/download/v1.0.6/fortune-for-GO.zip) | 已发布 |
 | [MiraiGo](https://github.com/Mrs4s/MiraiGo) | [CQHTTP-Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai) & [nonebot](https://github.com/nonebot/nonebot) | [Fortune For CQHTTP](https://github.com/Yiwen-Chan/fortune) | 待发布 |
 
 ## 运势池子
