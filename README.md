@@ -1,3 +1,5 @@
+**注意：该项目已转移至 [ZeroBot-Plugin](https://github.com/FloatTech/ZeroBot-Plugin/tree/master/plugin_fortune) 更新，为本地合成图片，新版本仅支持在 OneBot 标准下使用。**
+
 # fortune-运势
 服务端基于Django，python pillow库绘图
 
